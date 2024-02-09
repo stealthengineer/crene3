@@ -1,0 +1,17 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<div>
+    <a href="{% url 'Insert_data' %}" class="button">Instant fetch</a>
+    <form method="post" action="{% url 'Schedule_Insert' %}">
+        {% csrf_token %}
+        <label for="appt">Schedule a time for news fetching:</label>
+        <input type="time" name="Schedule_time" required />
+        <input type="text" name="Schedule_name" placeholder="Schedule Name" required/>
+        <button type="submit" >Submit</button>
+
+    </form>
+</div>
+<br>
+{{ block.super }}
+{% endblock %}

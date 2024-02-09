@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title%}
+Search
+{% endblock %}
+{% block content %}
+<input type="hidden" value="{{query}}" id="search_value">
+<input type="hidden" value="{{total_page}}" id="total_page">
+<input type="hidden" value="{{page}}" id="page_no">
+<div class="mid-container">
+   <div class="container search_container">
+      <div class="search_left_col">
+         <!-- Stories in Last -->
+
+         <!-- <h2 class="mbot30 custom_h2 typewriter fsize"><span class="small_heading ">Stories in Last</span></h2>
+         <div class="stories-wrap mbot50">
+            <ul>
+               <li><a href="javascript:void(0)" class="link_text" onclick="filter_date(1)">Last 24 Hours</a></li>
+               <hr class="dashed" />
+               <li><a href="javascript:void(0)" class="link_text" onclick="filter_date(7)">7 Days</a></li>
+               <hr class="dashed" />
+               <li><a href="javascript:void(0)" class="link_text" onclick="filter_date(30)">30 Days</a></li>
+               <hr class="dashed" />
+               <li><a href="javascript:void(0)" class="link_text" onclick="filter_date(90)">3 Months</a></li>
+               <hr class="dashed" />
+               <li><a href="javascript:void(0)" class="link_text" onclick="">Date Range</a></li>
+            </ul>
+         </div> -->
+
+       <!-- Chennai school Videos -->
+      </div>
+
+
+    <div class="search_right_col" id="main_data_div">
+
+       <!-- Chennai School Holiday News -->
+
+       <h2 class="mbot30 custom_h2 typewriter fsize"><span class="small_heading "> {{query}} </span></h2>
+       <p>You have searched for <b> {{query}} </b>, Showing <b>{{count}}</b> results</p>
+       <hr />
+       <h2 class="mbot30 custom_h2 typewriter fsize"><span class="small_heading "> {{query}} News</span></h2>
+        {% if data %}
+        {% for each in data %}
+       <div class="story-card-wrapper">
+          <div class="story_card_col g-col-6 g-col-md-4 3" data-aos="fade-up"  data-aos-delay="200">
+             <div class="news-card">
+                <h6 data-aos="fade-left" data-aos-delay="300"><a href="{% url 'GetNewsDetails' %}?id={{each.news_id}}">{{each.title}}</a></h6>
+                <p class="news-time">{{each.publishedAt}}</p>
+                <p>{{each.description}}
+                </p>
+             </div>
+          </div>
+       </div>
+       {% endfor %}
+       {% endif %}
+
+    </div>
+</div>
+</div>
+{% include "footer.html"%}
+
+{% endblock %}

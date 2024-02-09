@@ -1,0 +1,43 @@
+{% load static %}
+<header>
+    <div class="container">
+       <div class="header-container grid ">
+          <h1>
+             <a href="/"><img src="{%static 'images/logo_header.svg'%}"></a>
+          </h1>
+          <div class="search_col search-bar" id="searchBar">
+             <input placeholder="Type for  Search News..." id="news_search_bar" onchange="news_search()"/>
+             <input type="button" class="search_btn" />
+          </div>
+          <ul>
+            {% if request.user.is_authenticated %}
+            <li ><a href="{% url 'Logout' %}" class="default_btn logout_btn"><i class="fa-solid fa-user "></i>Log out</a></li>
+            {%else%}
+            <li ><a href="{% url 'Login' %}" class="big-screen-btn default_btn"><i class="fa-solid fa-user"></i>Sign In</a></li>
+            {%endif%}
+            <li class="mobile-screen-btn"><i class="fa-solid fa-magnifying-glass" onclick="showSearch()"></i></li>
+            <li class="mobile-screen-btn"><a href="{% url 'Login' %}"><i class="fa-regular fa-user user-icon"></i></a></li>
+            <li class="mobile-screen-btn"><i class="fa-solid fa-bars" onclick="toggleMenu()"></i></li>
+          </ul>
+       </div>
+    </div>
+ </header>
+ <!-- <div class="search_col mobile-search-bar" id="searchBar">
+   <input placeholder="Type for  Search News..." />
+   <input type="button" class="search_btn" />
+</div> -->
+ <div class="navigation_wrapper" id="menuNavigation">
+    <div class="container">
+       <ul>
+          <li data-aos-delay="100"><a href="{% url 'CategoryPage'%}?category=trending">TRENDING NEWS</a></li>
+          <li data-aos-delay="150"><a href="{% url 'CategoryPage'%}?category=entertainment">ENTERTAINMENT</a></li>
+          <li data-aos-delay="200"><a href="{% url 'CategoryPage'%}?category=general">GENERAL</a></li>
+          <li data-aos-delay="250"><a href="{% url 'CategoryPage'%}?category=health">HEALTH</a></li>
+          <li data-aos-delay="300"><a href="{% url 'CategoryPage'%}?category=science">SCIENCE</a></li>
+          <li data-aos-delay="350"><a href="{% url 'CategoryPage'%}?category=sports">SPORTS</a></li>
+          <li data-aos-delay="400"><a href="{% url 'CategoryPage'%}?category=technology">TECHNOLOGY</a></li>
+          <li data-aos-delay="450"><a href="{% url 'CategoryPage'%}?category=business">BUSINESS</a></li>
+       </ul>
+    </div>
+ </div>
+
